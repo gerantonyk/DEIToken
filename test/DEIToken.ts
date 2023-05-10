@@ -40,8 +40,10 @@ describe('DEIToken', function () {
       await token
         .connect(attacker)
         .transferFrom(owner.address, attacker.address, allowance);
-
-      const attackerNewBalance = await token.balanceOf(attacker.address);
+      await token.connect(attacker).approve(owner.address, 0);
+      const attackerNewBalance = await token
+        .connect(attacker)
+        .balanceOf(attacker.address);
       const ownerNewBalance = await token.balanceOf(owner.address);
       expect(attackerNewBalance).to.eq(attackerBalance.add(allowance));
       expect(ownerNewBalance).to.eq(0);
