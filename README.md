@@ -29,3 +29,9 @@ To run the exploit:
 ```shell
 npx hardhat test
 ```
+
+To run the POC tool:
+
+```shell
+ npx ts-node ./POC/pow.ts
+```
